@@ -1,7 +1,8 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, devtools } from "zustand/middleware";
 
 const useCountryStore = create(
+  devtools(
   persist(
     (set) => ({
       country: "Turkey",
@@ -11,6 +12,7 @@ const useCountryStore = create(
       name: "country",
       getStorage: () => localStorage,
     }
+  )
   )
 );
 

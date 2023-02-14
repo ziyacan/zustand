@@ -3,12 +3,14 @@ import useCounterStore from "./stores/counterStore";
 import useEuroStore from "./stores/euroStore";
 import useCountryStore from "./stores/countryStore";
 import useBookStore from "./stores/bookStore";
+import useBearStore from "./stores/bears";
 
 function App() {
   const { count, increment, decrement, reset } = useCounterStore();
   const { euro, increaseEuro, decreaseEuro } = useEuroStore();
   const { country, setCountry } = useCountryStore();
   const { amount, updateAmount } = useBookStore();
+  const { bears, increasePopulation, removeAllBears } = useBearStore();
 
   return (
     <div className="App">
@@ -31,8 +33,13 @@ function App() {
       </div>
 
       <div>
-        <h1> Books: {amount} </h1>
+        <h1>Bears: {bears}</h1>
+        <button onClick={increasePopulation}>one up</button>
+        <button onClick={removeAllBears}>reset</button>
+      </div>
 
+      <div>
+        <h1> Books: {amount} </h1>
         <button onClick={() => updateAmount(1)}> Update Amount </button>
       </div>
     </div>

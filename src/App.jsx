@@ -2,11 +2,13 @@ import "./App.css";
 import useCounterStore from "./stores/counterStore";
 import useEuroStore from "./stores/euroStore";
 import useCountryStore from "./stores/countryStore";
+import useBookStore from "./stores/bookStore";
 
 function App() {
   const { count, increment, decrement, reset } = useCounterStore();
   const { euro, increaseEuro, decreaseEuro } = useEuroStore();
   const { country, setCountry } = useCountryStore();
+  const { amount, updateAmount } = useBookStore();
 
   return (
     <div className="App">
@@ -26,6 +28,12 @@ function App() {
         <button onClick={() => setCountry("TR")}>Turkey</button>
         <button onClick={() => setCountry("USA")}>USA</button>
         <button onClick={() => setCountry("UK")}>UK</button>
+      </div>
+
+      <div>
+        <h1> Books: {amount} </h1>
+
+        <button onClick={() => updateAmount(1)}> Update Amount </button>
       </div>
     </div>
   );
